@@ -1,0 +1,34 @@
+//
+//  HorizontalListView.swift
+//  movieApp
+//
+//  Created by kareem mohamed  on 08/10/2026.
+//
+
+import SwiftUI
+
+struct HorizontalListView: View {
+    let titleHeader : String
+    var titles = [Constant.testTitleURL , Constant.testTitleURL2 , Constant.testTitleURL3]
+    var body: some View {
+        VStack( alignment: .leading, ){
+            Text(titleHeader).font(.title)
+            
+            ScrollView(.horizontal){
+                LazyHStack{
+                    ForEach(titles , id: \.self){
+                        title in AsyncImage(url: URL(string: title)){
+                            image in image.resizable().scaledToFit().clipShape(RoundedRectangle(cornerRadius: 16))
+                        } placeholder: {
+                            ProgressView()
+                        }.frame(width: 120 , height: 200)
+                    }
+                }
+            }
+        }.frame(height: 250).padding(16)
+    }
+}
+
+#Preview {
+    HorizontalListView(titleHeader:  Constant.trendingMoviesString)
+}
