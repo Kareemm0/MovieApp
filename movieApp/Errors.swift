@@ -32,6 +32,7 @@ enum ApiConfigError : Error{
 enum NetworkError : Error , LocalizedError{
     case badRequestResponse(underlyingError: Error)
     case dataMissing
+    case urlBuildFailed
     
     
     
@@ -43,6 +44,8 @@ enum NetworkError : Error , LocalizedError{
             return "Missing Api Configuration"
             
           
+        case .urlBuildFailed:
+            return "Url Build Failed"
         }
     }
     
