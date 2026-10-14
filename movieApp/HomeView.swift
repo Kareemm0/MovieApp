@@ -19,7 +19,9 @@ struct HomeView: View {
                 case .notStarted:
                     EmptyView()
                 case .fetching:
-                    ProgressView()
+                    ProgressView().frame(
+                        width: geo.size.width ,height: geo.size.height
+                    )
                 case .success:
                     LazyVStack{
                         AsyncImage(url: URL(string: herTextTitle)){
@@ -45,9 +47,11 @@ struct HomeView: View {
                         }
                         
                         HorizontalListView(titleHeader: Constant.trendingMoviesString , titles: viewModel.trendingMovies )
-    //                    HorizontalListView(titleHeader: Constant.trendingTVString)
-    //                    HorizontalListView(titleHeader: Constant.topRatedMovieString)
-    //                    HorizontalListView(titleHeader: Constant.topRatedTVString)
+                        HorizontalListView(titleHeader: Constant.trendingTVString,
+                                           titles: viewModel.trendingTV
+                        )
+                        HorizontalListView(titleHeader: Constant.topRatedMovieString , titles: viewModel.topRatedMovies)
+                        HorizontalListView(titleHeader: Constant.topRatedTVString , titles: viewModel.topRatedTv)
                     }
                 case .failre(let error):
                     Text("Error: \(error.localizedDescription)")
