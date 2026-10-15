@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E241CF1C-EADF-4A6C-AFA2-89FD30053B36"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "movieApp/DataFetcher.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "DataFetcher"
-            landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F366CEEB-8741-4542-957F-9822909D64AC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -62,9 +46,9 @@
             filePath = "movieApp/DataFetcher.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "buildURL(media:type:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "buildURL(media:type:search:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

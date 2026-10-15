@@ -18,12 +18,12 @@ struct ContentView: View {
             Tab(
                 Constant.upcomingString , systemImage: Constant.upconingIcon
             ){
-                Text(Constant.upcomingString )
+                UpComningView()
             }
             Tab(
                 Constant.searchString , systemImage: Constant.searchIcon
             ){
-                Text(Constant.searchString)
+                SearchView()
             }
             Tab(
                 Constant.downloadString , systemImage: Constant.downloadIcon
