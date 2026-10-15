@@ -70,7 +70,7 @@ struct SearchView: View {
                         return
                     }
                     
-                    await viewModel.getSearchTitles(by: searchByMovies ? "Movie" : "tv", for: searchText)
+                    await viewModel.getSearchTitles(by: searchByMovies ? "movie" : "tv", for: searchText)
                 }
                 .navigationDestination(for: Title.self) { title in
                     TitlesDetailsView(title: title)

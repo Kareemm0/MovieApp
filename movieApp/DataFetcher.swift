@@ -11,7 +11,7 @@ struct DataFetcher{
     
     let tmbdBaseUrl = ApiConfig.shared?.tmdbBaseURL
     let tmbdApiKey = ApiConfig.shared?.tmdbAPIKey
-    let youtubeSearchUrl = ApiConfig.shared?.youtubesearchUrl
+    let youtubeSearchUrl = ApiConfig.shared?.youtubeSearchURL
     let youtubeApiKey = ApiConfig.shared?.youtubeApiKey
     
     func fetchTitles (for media: String , by type:String , with title:String? = nil)async throws -> [Title]{

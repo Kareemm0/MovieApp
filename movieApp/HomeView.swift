@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
     
     let viewModel = ViewModel()
     @State private var titleDetailsPath = NavigationPath()
+    @Environment(\.modelContext) var modelContext
     var body: some View {
         
         NavigationStack(path: $titleDetailsPath) {
@@ -45,7 +47,10 @@ struct HomeView: View {
                                     Text(Constant.playString)
                                         .ghostButton()
                                 }
-                                Button{} label: {
+                                Button{
+                                    modelContext.insert(viewModel.heroTitle)
+                                    try? modelContext.save()
+                                } label: {
                                     Text(Constant.downloadString).ghostButton()
                                 }
                             }
@@ -67,7 +72,10 @@ struct HomeView: View {
                         }
                        
                     case .failre(let error):
-                        Text("Error: \(error.localizedDescription)")
+                        Text(error.localizedDescription).errorMessage()
+                            .frame(
+                            width: geo.size.width ,height: geo.size.height
+                        )
                     }
                     
                     

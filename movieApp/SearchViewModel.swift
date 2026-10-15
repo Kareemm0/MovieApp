@@ -21,7 +21,7 @@ class SearchViewModel{
             
             if title.isEmpty{
                 searchTitles = try await dataFetcher.fetchTitles(for: media, by: "trending")
-            }else{
+            } else{
                 searchTitles = try await dataFetcher.fetchTitles(
                     for: media, by: "search" , with: title)
             }

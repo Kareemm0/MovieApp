@@ -28,7 +28,7 @@ struct ContentView: View {
             Tab(
                 Constant.downloadString , systemImage: Constant.downloadIcon
             ){
-                Text(Constant.downloadString)
+                DownloadView()
             }
         }
     }

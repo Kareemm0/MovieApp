@@ -18,9 +18,11 @@ struct UpComningView: View {
                 case .notStarted: EmptyView()
                 case .fetching : ProgressView().frame(width: geo.size.width , height: geo.size.height)
                 case .failre(let underlyingError):
-                    Text(underlyingError.localizedDescription)
+                    Text(underlyingError.localizedDescription).errorMessage().frame(
+                        width: geo.size.width ,height: geo.size.height
+                    )
                 case .success :
-                    VerticalListView(titles: viewModel.upcomingMovies)
+                    VerticalListView(titles: viewModel.upcomingMovies , canDelete: false)
                 }
             }.task {
                 await viewModel.getUpcomingMovies()

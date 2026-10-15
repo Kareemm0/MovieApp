@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TitlesDetailsView: View {
-    
+    @Environment(\.dismiss) var dismiss
     let title: Title
     var titleName : String {
     return  (title.name ?? title.title) ?? ""
     }
     let viewModel = ViewModel()
+    @Environment(\.modelContext) var modelContext
     var body: some View{
         GeometryReader{geometry in
             
@@ -32,7 +34,13 @@ struct TitlesDetailsView: View {
                          
                         HStack{
                             Spacer()
-                            Button{}label: {
+                            Button{
+                                let saveTitle = title
+                                saveTitle.title = titleName
+                                modelContext.insert(saveTitle)
+                                try? modelContext.save()
+                                dismiss()
+                            }label: {
                                 Text(Constant.downloadString).ghostButton()
                             }
                             Spacer()
@@ -42,7 +50,9 @@ struct TitlesDetailsView: View {
                     }
                 }
             case .failre(let underlyingError):
-                Text(underlyingError.localizedDescription)
+                Text(underlyingError.localizedDescription).errorMessage().frame(
+                    width: geometry.size.width ,height: geometry.size.height
+                )
             }
         }.task {
      await viewModel.getVideoId(for: titleName)

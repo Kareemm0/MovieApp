@@ -11,9 +11,9 @@ import Foundation
 struct ApiConfig : Decodable{
     let tmdbBaseURL : String
     let tmdbAPIKey : String
-    let youtubeBaseUrl: String
+    let youtubeBaseURL: String
     let youtubeApiKey: String
-    let youtubesearchUrl : String
+    let youtubeSearchURL : String
     
     static let shared : ApiConfig? = {
         do{
