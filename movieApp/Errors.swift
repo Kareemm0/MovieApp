@@ -12,6 +12,7 @@ enum ApiConfigError : Error{
     case fileNotFound
     case dataLoadingFailed(underLyingError: Error)
     case decodingFailed(underLyingError: Error)
+  
     
     
     var errorDescription: String? {
@@ -23,6 +24,7 @@ enum ApiConfigError : Error{
         case .decodingFailed(underLyingError: let error) :
             return "Failed to decode data From Api Configuration file \(error.localizedDescription)"
        
+       
         }
     }
 }
@@ -33,6 +35,7 @@ enum NetworkError : Error , LocalizedError{
     case badRequestResponse(underlyingError: Error)
     case dataMissing
     case urlBuildFailed
+    case missingconfig
     
     
     
@@ -42,10 +45,10 @@ enum NetworkError : Error , LocalizedError{
             return "Faild to parse url response \(error.localizedDescription)"
         case .dataMissing :
             return "Missing Api Configuration"
-            
-          
         case .urlBuildFailed:
             return "Url Build Failed"
+        case .missingconfig:
+            return "Missing Config Failure"
         }
     }
     

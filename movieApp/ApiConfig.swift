@@ -11,6 +11,9 @@ import Foundation
 struct ApiConfig : Decodable{
     let tmdbBaseURL : String
     let tmdbAPIKey : String
+    let youtubeBaseUrl: String
+    let youtubeApiKey: String
+    let youtubesearchUrl : String
     
     static let shared : ApiConfig? = {
         do{
@@ -22,7 +25,7 @@ struct ApiConfig : Decodable{
     }()
     
     
-    private static func loadConfig() throws -> ApiConfig{
+    private static func loadConfig() throws -> ApiConfig {
     
         guard let url = Bundle.main.url(forResource: "ApiConfig", withExtension: "json") else {
             throw ApiConfigError.fileNotFound

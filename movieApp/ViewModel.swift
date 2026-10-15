@@ -12,26 +12,29 @@ import Foundation
 
 class ViewModel{
     enum FetchStatus{
-      case  notStarted
+        case notStarted
         case fetching
         case success
         case failre(underlyingError: Error)
     }
     
     private(set) var homeStatus: FetchStatus = .notStarted
+    private(set) var vedioIdStatus : FetchStatus = .notStarted
     private var dataFetcher = DataFetcher()
     var trendingMovies : [Title] = []
     var trendingTV : [Title] = []
     var topRatedMovies : [Title] = []
     var topRatedTv : [Title] = []
+    var heroTitle = Title.previewTitles[0]
+    var videoId = ""
     
     
     func gettitles()async{
         homeStatus = .fetching
         
-     if   trendingMovies.isEmpty{
+     if trendingMovies.isEmpty{
             
-            do{
+            do {
                 async let tMovies =  dataFetcher.fetchTitles(for: "movie" , by: "trending")
                 async let tTV =  dataFetcher.fetchTitles(for: "tv" , by: "trending")
                 async let tRMovies =  dataFetcher.fetchTitles(for: "movie" , by: "top_rated")
@@ -41,6 +44,10 @@ class ViewModel{
                 trendingTV = try await tTV
                 topRatedMovies = try await tRMovies
                 topRatedTv = try await tRTV
+                
+                if let title = trendingMovies.randomElement(){
+                    heroTitle = title
+                }
                 homeStatus = .success
             }catch{
                 print(error)
@@ -48,6 +55,18 @@ class ViewModel{
             }
         } else{
             homeStatus = .success
+        }
+    }
+    
+    func getVideoId(for title: String)async{
+        vedioIdStatus = .fetching
+        
+        do{
+            videoId = try await dataFetcher.fetchVideoId(for: title)
+            vedioIdStatus = .success
+        }catch{
+            print(error)
+            vedioIdStatus = .failre(underlyingError: error)
         }
     }
 }

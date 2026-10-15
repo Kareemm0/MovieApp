@@ -46,6 +46,13 @@ struct Constant {
 }
 
 
+enum YoutubeUrlStrings : String {
+    case trailer = "trailer"
+    case querySearch = "q"
+    case space = " "
+    case key = "key"
+}
+
 extension Text {
     func ghostButton () -> some View{
         self
