@@ -17,16 +17,9 @@ struct YoutubePlayer: UIViewRepresentable{
         webView
     }
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        guard let baseUrlString = youtubeBaseUrl,
-              let baseUrl = URL(string: baseUrlString) else { return }
-        
-        // Trim any accidental whitespace from the video ID just in case
-        let cleanVideoId = videoId.trimmingCharacters(in: .whitespacesAndNewlines)
-        let fullURL = baseUrl.appending(path: cleanVideoId)
-        
-        // Check your Xcode console for this print statement!
-        print("DEBUG: The exact URL loading is: \(fullURL.absoluteString)")
-        
-        webView.load(URLRequest(url: fullURL))
-    }
+            guard let baseURLString = youtubeBaseUrl,
+                  let baseURL = URL(string: baseURLString) else {return}
+            let fullURL = baseURL.appending(path: videoId)
+            webView.load(URLRequest(url: fullURL))
+        }
 }

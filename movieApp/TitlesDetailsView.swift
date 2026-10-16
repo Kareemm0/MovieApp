@@ -55,7 +55,8 @@ struct TitlesDetailsView: View {
                 )
             }
         }.task {
-     await viewModel.getVideoId(for: titleName)
+            print("============\(titleName)")
+            await viewModel.getVideoId(for: titleName)
         }
     }
     
